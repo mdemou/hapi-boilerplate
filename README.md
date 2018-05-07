@@ -9,7 +9,7 @@ This repository contains a Hapi v17 boilerplate with MongoDB
 ### Configure Mongo DDBB
 > edit ./server/config/environment/local.js 
 > update mongoUrl with your Mongo URI and 
-> update mongoDdbb field with yout ddbb name
+> update mongoDdbb field with your database name
 
 ## Set up and run
 ```sh
@@ -79,7 +79,7 @@ hapi-boilerplate:1
 Feel free to ask for support, or pull requests with improvements this repository. I will be very happy to hear from you, and make this as useful as possible
 
 ## Thanks!
-> It is greate to share this with all of you. I hope this could be useful :)
+> It is great to share this with all of you, and could be useful :)
 
 ## License
 Check LICENSE file
