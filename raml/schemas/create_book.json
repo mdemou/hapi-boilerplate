@@ -1,0 +1,30 @@
+{  
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "author": {
+      "type": "string",
+      "title": "The Author Schema ",
+      "default": "",
+      "examples": [
+        "John Doe"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "title": "The Title Schema ",
+      "default": "",
+      "examples": [
+        "This is John Doe"
+      ]
+    },
+    "year": {
+      "type": "string",
+      "title": "The Year Schema ",
+      "default": "",
+      "examples": [
+        "1987"
+      ]
+    }
+  }
+}

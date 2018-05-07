@@ -68,6 +68,5 @@ typings/
 coverage/
 documentation/
 docs/
-raml/
 
 npm-debug.log

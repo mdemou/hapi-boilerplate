@@ -1,0 +1,52 @@
+#%RAML 1.0
+---
+title: "Hapi 17 Boilerplate "
+version: v1
+baseUri: /{version}/book
+
+schemas:
+  create_book: !include schemas/create_book.json
+
+mediaType: application/json
+
+# Book resource 
+/:
+  description: Books resource
+  get:
+    description: Get all books detailed
+      headers:
+        Content-Type:
+          description: Request content type (json)
+          example: application/json
+          default: application/json    
+    responses: !include responses/get_books.yml
+  post:
+    description: Create book
+      headers:
+        Content-Type:
+          description: Request content type (json)
+          example: application/json
+          default: application/json
+      body:
+        schema: !include schemas/create_book.json
+        example: !include schemas/examples/create_book.json
+      responses: !include responses/create_book.yml
+
+/{bookUuid}:
+  description: Single resources
+  get:
+    description: Get book detailed
+      headers:
+        Content-Type:
+          description: Request content type (json)
+          example: application/json
+          default: application/json    
+    responses: !include responses/get_book.yml
+  delete:
+    description: Delete book resource
+      headers:
+        Content-Type:
+          description: Request content type (json)
+          example: application/json
+          default: application/json    
+    responses: !include responses/delete_book.yml  

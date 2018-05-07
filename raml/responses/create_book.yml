@@ -1,0 +1,16 @@
+201:
+  description: Create book
+  body:
+    application/json:
+      example: |
+        {
+            "result": {
+                "code": "BOOKPOTATOED2010",
+                "message": "Book created successfully!"
+            },
+            "data": {
+                "bookUuid": "eed5efd0-e29b-4c47-8745-da8dc91073cd",
+                "author": "John Doe",
+                "title": "This is John Doe"
+            }
+        }

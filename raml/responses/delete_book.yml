@@ -1,0 +1,11 @@
+200:
+  description: Delete book
+  body:
+    application/json:
+      example: |
+        {
+            "result": {
+                "code": "BOOKDELETED20002",
+                "message": "Book deleted successfully!"
+            }
+        }
