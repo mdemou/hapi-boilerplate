@@ -1,0 +1,12 @@
+# Dependency directory
+.idea/
+.vscode/
+.DS_Store
+
+node_modules/
+coverage/
+documentation/
+docs/
+raml/
+
+*.log

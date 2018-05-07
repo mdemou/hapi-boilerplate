@@ -1,0 +1,29 @@
+{
+  "rootDir": "../",
+  "collectCoverageFrom": [
+    "server/**/*.js",
+    "!server/**/*.test.js",
+    "!server/config/**/**",
+    "!server/app.js",
+    "!server/index.js",
+    "!server/init.js",
+    "!server/routes.js",
+    "!server/api/boot.js",
+    "!server/api/services/initial.service.js",
+    "!server/api/services/schema.service.js",
+    "!server/**/index.js"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "statements": 0,
+      "branches": 0,
+      "functions": 0,
+      "lines": 0
+    }
+  },
+  "coverageReporters": ["html", "text", "text-summary", "json-summary"],
+  "moduleDirectories": [
+    "node_modules"
+  ],
+  "testRegex": "tests/.*\\.test\\.js$"
+}

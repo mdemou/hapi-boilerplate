@@ -1,0 +1,64 @@
+{
+  "name": "Hapi-Boilerplate",
+  "version": "1.0.0",
+  "description": "Hapi v17 Boilerplate with MongoDB",
+  "main": "server/index.js",
+  "author": "Javier Moure",
+  "contributors": [
+    {
+      "name": "Williams Aguilera",
+      "email": "webnator@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "awilix": "3.0.1",
+    "hapi": "17.4.0",
+    "joi": "13.1.0",
+    "lodash": "4.17.4",
+    "mongodb": "3.0.1",
+    "pino": "4.16.1",
+    "uuid": "3.2.1"
+  },
+  "devDependencies": {
+    "cross-env": "^4.0.0",
+    "eslint": "^4.2.0",
+    "eslint-plugin-jest": "^21.6.1",
+    "jest": "^20.0.0",
+    "jsdoc": "^3.4.3",
+    "nodemon": "^1.11.0",
+    "nsp": "2.7.0",
+    "raml2html": "^6.3.0",
+    "rimraf": "^2.6.1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "keywords": [
+    "boilerplate",
+    "hapi",
+    "hapi.js",
+    "hapiv17",
+    "mongodb",
+    "node",
+    "node.js"
+  ],
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdemou/hapi-boilerplate.git"
+  },
+  "scripts": {
+    "start": "node server",
+    "lint": "eslint --fix --ignore-path .gitignore .",
+    "dev": "cross-env BOILERPLATE_NODE_ENV=local cross-env NODE_ENV=development nodemon --inspect -q -w ./server server",
+    "test:clean": "rimraf ./coverage",
+    "pretest:unit": "npm run test:clean",
+    "test:unit": "cross-env NODE_ENV=test cross-env BOILERPLATE_NODE_ENV=test jest -c ./tests/unit.config.json --coverage",
+    "test": "npm run test:unit",
+    "test:unit:watch": "cross-env NODE_ENV=test cross-env BOILERPLATE_NODE_ENV=test jest -c ./tests/unit.config.json --watchAll",
+    "build:apiDocs:clean": "rimraf ./documentation && mkdir ./documentation",
+    "build:apiDocs": "npm run build:apiDocs:clean && raml2html raml/api.raml > ./documentation/index.html",
+    "nsp": "nsp check"
+  }
+}
