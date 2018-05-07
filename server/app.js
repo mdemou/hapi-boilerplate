@@ -7,7 +7,8 @@ function makeService(deps) {
   const {
     Hapi,
     config, 
-    apiRoutes
+    apiRoutes,
+    loggingService
   } = deps;
 
   const plugins = [{
@@ -35,7 +36,7 @@ function makeService(deps) {
       await server.start();
       return server;
     } catch (e) {
-      console.log(e);
+      loggingService.info(__filename, 'Init Server Failed: ', e);
     }
   };
 }

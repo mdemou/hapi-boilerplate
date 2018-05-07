@@ -26,6 +26,7 @@ const makeBookController = require('./book/book.controller');
 const makeBookService = require('./book/book.service');
 const makeBookResponses = require('./book/book.responses');
 const BookEntity = require('./book/book.entity');
+const BookDAO = require('./book/book.DAO');
 const bookRouter = require('./book/routes');
 
 
@@ -52,6 +53,7 @@ container.register({
   bookService: asFunction(makeBookService).singleton(),
   bookResponses: asFunction(makeBookResponses).singleton(),
   BookEntity: asFunction((opts) => () => new BookEntity(opts)).singleton(),
+  BookDAO: asFunction((opts) => () => new BookDAO(opts)).singleton(),
   bookRouter: asFunction(bookRouter).singleton(),
 
 });

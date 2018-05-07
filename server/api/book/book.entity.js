@@ -1,12 +1,10 @@
 'use strict';
 
-const BookDAO = require('./book.DAO');
-
 class BookEntity {
 
-  constructor({bookResponses}) {
+  constructor({bookResponses, BookDAO}) {
     this.bookResponses = bookResponses;
-    this.bookDAO = new BookDAO();
+    this.bookDAO = BookDAO();
     this.books;
   }
 

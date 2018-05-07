@@ -1,15 +1,13 @@
 'use strict';
 
-
-const config = require('./../../config/environment');
 const DBService = require('./../services/lib/index');
 const uuidv4 = require('uuid/v4');
 
-
 class BookDAO extends DBService {
 
-  constructor() {
+  constructor({config}) {
     super();
+    this.config = config;
     this.COLLECTION_NAME = 'book';
   }
 
@@ -57,7 +55,7 @@ class BookDAO extends DBService {
           sort: {
             dateCreated: -1
           },
-          limit: config.book.maxEntriesLimit
+          limit: this.config.book.maxEntriesLimit
         }
       }
     };
