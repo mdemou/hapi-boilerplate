@@ -7,9 +7,9 @@ This repository contains a Hapi v17 boilerplate with MongoDB
 * MongoDB
 
 ### Configure Mongo DDBB
-> edit ./server/config 
-> update mongoUrl with your Mongo URI and 
-> update mongoDdbb field with your database name
+> edit ./server/config and .env file -
+> update mongoUrl with your Mongo URI and -
+> update mongoDdbb field with your database name -
 
 ## Set up and run
 ```sh
@@ -27,7 +27,7 @@ $ npm run dev
 ## Usage
 Basic REST API about books
 
-```
+```sh
 # create book resources 
 $ curl -X POST \
   http://localhost:9000/v1/book \
@@ -63,7 +63,7 @@ $ npm run nsp
 
 ## Docker
 Try it with docker!
-```
+```sh
 # build docker image
 $ docker build -t hapi-boilerplate:1 .
 

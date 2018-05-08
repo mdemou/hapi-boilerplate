@@ -35,21 +35,6 @@ function makeBookController({loggingService, errorService, responsesService, boo
       return h.response(response.body).code(response.statusCode);
     },
 
-    async updateBook(request, h) {
-      try {
-        let newObj = Object.assign(request.payload, request.params);
-        await schemaService.validateSchema(newObj, new CreateBookModel());
-        let resultBook = await bookService.updateBook(request.payload);
-        let response = responsesService.createResponseData(
-          bookResponses.updated_book_ok,
-          resultBook);
-        return h.response(response.body).code(response.statusCode);
-      } catch (error) {
-        let response = errorService.createGeneralError(error);
-        return h.response(response.body).code(response.statusCode);
-      }
-    },
-
     async deleteBook(request, h) {
       let response;
       try {

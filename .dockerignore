@@ -10,3 +10,5 @@ docs/
 raml/
 
 *.log
+
+.env
