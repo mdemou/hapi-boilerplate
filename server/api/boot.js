@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').config();
 
 const {createContainer, asValue, asFunction, asClass} = require('awilix');
 const container = createContainer();
@@ -7,12 +8,16 @@ const container = createContainer();
 // Init
 const makeAppInit = require('./../init');
 const app = require('./../app');
-const config = require('./../config/environment');
+const config = require('./../config');
 const apiRoutes = require('./../routes');
 
 // Libraries
 const mongodb = require('mongodb');
 const Hapi = require('hapi');
+const Joi = require('joi');
+const _ = require('lodash');
+const pino = require('pino')();
+const uuidv4 = require('uuid/v4');
 
 // Services
 const ErrorService = require('./services/errors.service');
@@ -25,15 +30,19 @@ const LoggingService = require('./services/logging.service');
 const makeBookController = require('./book/book.controller');
 const makeBookService = require('./book/book.service');
 const makeBookResponses = require('./book/book.responses');
-const BookEntity = require('./book/book.entity');
 const bookRouter = require('./book/routes');
+const bookDAO = require('./book/book.DAO');
 
 
 container.register({
   // Libs
   mongodb: asValue(mongodb),
   Hapi: asValue(Hapi),
+  Joi: asValue(Joi),
+  pino: asValue(pino),
+  _: asValue(_),
   config: asValue(config),
+  uuidv4: asValue(uuidv4),
 
   // Initial
   appInit: asFunction(makeAppInit).singleton(),
@@ -41,18 +50,18 @@ container.register({
   apiRoutes: asFunction(apiRoutes).singleton(),
 
   // services
-  loggingService: asFunction(() => LoggingService).singleton(),
-  errorService: asFunction(() => ErrorService).singleton(),
-  responsesService: asFunction(() => ResponsesService).singleton(),
-  schemaService: asFunction(() => SchemaService).singleton(),
-  GlobalService: asFunction(() => GlobalService).singleton(),
+  loggingService: asFunction(LoggingService).singleton(),
+  errorService: asValue(ErrorService),
+  responsesService: asValue(ResponsesService),
+  schemaService: asFunction(SchemaService).singleton(),
+  GlobalService: asValue(GlobalService),
 
   // book entity
   bookController: asFunction(makeBookController).singleton(),
   bookService: asFunction(makeBookService).singleton(),
   bookResponses: asFunction(makeBookResponses).singleton(),
-  BookEntity: asFunction((opts) => () => new BookEntity(opts)).singleton(),
   bookRouter: asFunction(bookRouter).singleton(),
+  bookDAO: asClass(bookDAO).singleton(),
 
 });
 

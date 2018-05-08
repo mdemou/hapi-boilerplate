@@ -1,7 +1,7 @@
 'use strict';
 
 const CODE_ENTITY_EXISTS = 11000;
-const config = require('./../../../config/environment');
+const config = require('./../../../config');
 const Responses = require('./dbServiceResponses');
 const Global = require('./../global.service');
 
@@ -22,7 +22,7 @@ class DBService {
    * @return {Object} result - The collection
    */
   getCollection() {
-    let collectionName = this.getCollectionName();
+    const collectionName = this.getCollectionName();
     return Global.getConfigValue('db').collection(collectionName);
   }
 
@@ -33,8 +33,8 @@ class DBService {
    */
   insert(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
-      let options = data.dbData.options || {};
+      const collection = this.getCollection();
+      const options = data.dbData.options || {};
 
       collection.insert(data.dbData.entity, options, (err, response) => {
         if (err) {
@@ -56,8 +56,8 @@ class DBService {
    */
   insertMany(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
-      let options = data.dbData.options || {};
+      const collection = this.getCollection();
+      const options = data.dbData.options || {};
 
       collection.insertMany(data.dbData.entities, options, (err, response) => {
         if (err) {
@@ -80,9 +80,9 @@ class DBService {
    */
   findOne(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
-      let projection = data.dbData.projection || {};
-      let options = data.dbData.options || {};
+      const collection = this.getCollection();
+      const projection = data.dbData.projection || {};
+      const options = data.dbData.options || {};
 
       collection.findOne(data.dbData.query, options, (err, result) => {
         if (err) {
@@ -101,11 +101,11 @@ class DBService {
    */
   find(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
-      let projection = data.dbData.projection || {};
-      let queryLimit = data.dbData.options.limit || config.defaults.mongo.limit;
-      let options = data.dbData.options || {};
-      let sortFields = data.dbData.options.sort || {};
+      const collection = this.getCollection();
+      const projection = data.dbData.projection || {};
+      const queryLimit = data.dbData.options.limit || config.defaults.mongo.limit;
+      const options = data.dbData.options || {};
+      const sortFields = data.dbData.options.sort || {};
 
       collection.find(data.dbData.query).project(projection).sort(sortFields).limit(queryLimit).toArray((err, result) => {
         if (err) {
@@ -124,8 +124,8 @@ class DBService {
    */
   distinct(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
-      let distinct = data.dbData.distinct;
+      const collection = this.getCollection();
+      const distinct = data.dbData.distinct;
 
       collection.distinct(distinct, (err, result) => {
         if (err) {
@@ -144,8 +144,8 @@ class DBService {
    */
   count(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
-      let options = data.dbData.options || {};
+      const collection = this.getCollection();
+      const options = data.dbData.options || {};
 
       collection.count(data.dbData.query, options, (err, result) => {
         if (err) {
@@ -164,12 +164,12 @@ class DBService {
    */
   findAndModify(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
+      const collection = this.getCollection();
 
-      let query = data.dbData.query;
-      let update = data.dbData.entity;
-      let options = data.dbData.options || {};
-      let sort = data.dbData.sort || {};
+      const query = data.dbData.query;
+      const update = data.dbData.entity;
+      const options = data.dbData.options || {};
+      const sort = data.dbData.sort || {};
 
       collection.findAndModify(query, sort, update, options, (err, result) => {
         if (err) {
@@ -190,10 +190,10 @@ class DBService {
    */
   update(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
-      let query = data.dbData.query;
-      let update = data.dbData.entity;
-      let options = data.dbData.options || {};
+      const collection = this.getCollection();
+      const query = data.dbData.query;
+      const update = data.dbData.entity;
+      const options = data.dbData.options || {};
 
       collection.update(query, update, options, (err, response) => {
         if (err) {
@@ -215,7 +215,7 @@ class DBService {
    */
   remove(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
+      const collection = this.getCollection();
       let options = {};
       if (data.dbData.query == undefined || Object.keys(data.dbData.query).length === 0) {
         return reject(Responses.condition_not_found);
@@ -240,7 +240,7 @@ class DBService {
    */
   findMax(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
+      const collection = this.getCollection();
       collection.find(data.dbData.query).sort(data.dbData.fieldMax).limit(1).toArray((err, result) => {
         if (err) {
           return reject(Responses.internal_ddbb_error);
@@ -261,7 +261,7 @@ class DBService {
    */
   aggregate(data) {
     return new Promise((resolve, reject) => {
-      let collection = this.getCollection();
+      const collection = this.getCollection();
       collection.aggregate(data.dbData.query, (err, result) => {
         if (err) {
           return reject(Responses.internal_ddbb_error);

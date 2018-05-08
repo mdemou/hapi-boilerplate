@@ -4,7 +4,7 @@
 // ==================================
 module.exports = {
   ip: process.env.BOOK_IP,
-  port: process.env.BOOK_PORT,
+  port: parseInt(process.env.BOOK_PORT),
   mongoUrl: process.env.BOOK_MONGOURL,
   mongoDdbb: process.env.BOOK_MONGODDBB,
 
