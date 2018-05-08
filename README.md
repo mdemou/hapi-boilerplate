@@ -68,8 +68,7 @@ Try it with docker!
 $ docker build -t hapi-boilerplate:1 .
 
 # run docker image (set variables as you need)
-docker run --rm -9000:9000 
--e BOILERPLATE_NODE_ENV=development \
+docker run --rm -p 9000:9000 \ 
 -e BOOK_IP=localhost \
 -e BOOK_PORT=9000 \
 -e BOOK_MONGOURL="mongodb://mongoip:27020" \
