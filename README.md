@@ -53,6 +53,10 @@ $ curl -X DELETE \
 
 ## Extras
 ```sh
+# build RAML and open in browser
+$ npm run build:apiDocs
+$ open documentation/index.html
+
 # check packages vulnerabilities
 $ npm run nsp
 ```

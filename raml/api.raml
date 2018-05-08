@@ -4,10 +4,10 @@ title: "Hapi 17 Boilerplate "
 version: v1
 baseUri: /{version}/book
 
-schemas:
-  create_book: !include schemas/create_book.json
-
 mediaType: application/json
+
+types:
+  create_book: !include schemas/create_book.json
 
 # Book resource 
 /:
@@ -21,16 +21,12 @@ mediaType: application/json
           default: application/json    
     responses: !include responses/get_books.yml
   post:
-    description: Create book
-      headers:
-        Content-Type:
-          description: Request content type (json)
-          example: application/json
-          default: application/json
-      body:
-        schema: !include schemas/create_book.json
+    description: Create a new Foo
+    body:
+      application/json:
+        type: create_book
         example: !include schemas/examples/create_book.json
-      responses: !include responses/create_book.yml
+    responses: !include responses/create_book.yml        
 
 /{bookUuid}:
   description: Single resources
