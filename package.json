@@ -52,12 +52,12 @@
   "scripts": {
     "start": "node server",
     "lint": "eslint --fix --ignore-path .gitignore .",
-    "dev": "cross-env BOILERPLATE_NODE_ENV=local cross-env NODE_ENV=development nodemon --inspect -q -w ./server server",
+    "dev": "cross-env cross-env NODE_ENV=development nodemon --inspect -q -w ./server server",
     "test:clean": "rimraf ./coverage",
     "pretest:unit": "npm run test:clean",
-    "test:unit": "cross-env NODE_ENV=test cross-env BOILERPLATE_NODE_ENV=test jest -c ./tests/unit.config.json --coverage",
+    "test:unit": "cross-env NODE_ENV=test cross-env jest -c ./tests/unit.config.json --coverage",
     "test": "npm run test:unit",
-    "test:unit:watch": "cross-env NODE_ENV=test cross-env BOILERPLATE_NODE_ENV=test jest -c ./tests/unit.config.json --watchAll",
+    "test:unit:watch": "cross-env NODE_ENV=test cross-env jest -c ./tests/unit.config.json --watchAll",
     "build:apiDocs:clean": "rimraf ./documentation && mkdir ./documentation",
     "build:apiDocs": "npm run build:apiDocs:clean && raml2html raml/api.raml > ./documentation/index.html",
     "nsp": "nsp check"
