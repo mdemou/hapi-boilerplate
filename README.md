@@ -7,7 +7,7 @@ This repository contains a Hapi v17 boilerplate with MongoDB
 * MongoDB
 
 ### Configure Mongo DDBB
-> edit ./server/config/environment/local.js 
+> edit ./server/config 
 > update mongoUrl with your Mongo URI and 
 > update mongoDdbb field with your database name
 

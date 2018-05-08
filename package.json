@@ -13,6 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "awilix": "3.0.1",
+    "dotenv": "^5.0.1",
     "hapi": "17.4.0",
     "joi": "13.1.0",
     "lodash": "4.17.4",

@@ -1,13 +1,17 @@
 'use strict';
 
 const DBService = require('./../services/lib/index');
-const uuidv4 = require('uuid/v4');
 
 class BookDAO extends DBService {
-
-  constructor({config}) {
+  constructor(deps) {
     super();
+    const {
+      config,
+      uuidv4
+    } = deps;
+
     this.config = config;
+    this.uuidv4 = uuidv4;
     this.COLLECTION_NAME = 'book';
   }
 
@@ -16,8 +20,8 @@ class BookDAO extends DBService {
   }
 
   createBook(book) {
-    book.id = uuidv4();
-    let data = {
+    book.id = this.uuidv4();
+    const data = {
       dbData: {
         entity: book
       }
@@ -26,18 +30,19 @@ class BookDAO extends DBService {
     return super.insert(data);
   }
 
-  findBook(id) {
-    let data = {
+  async findBook(id) {
+    const data = {
       dbData: {
         query: {id: id}
       }
     };
 
-    return super.findOne(data);
+    const res = await super.findOne(data);
+    return res.dbData.result;
   }
 
   deleteBook(id) {
-    let data = {
+    const data = {
       dbData: {
         query: {id: id}
       }
@@ -47,8 +52,8 @@ class BookDAO extends DBService {
 
   }
 
-  getBooks() {
-    let data = {
+  async getBooks() {
+    const data = {
       dbData: {
         query: {},
         options: {
@@ -60,7 +65,8 @@ class BookDAO extends DBService {
       }
     };
 
-    return super.find(data);
+    const res = await super.find(data);
+    return res.dbData.result;
   }
 
 
