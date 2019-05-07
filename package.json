@@ -12,25 +12,24 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "awilix": "3.0.1",
-    "dotenv": "^5.0.1",
+    "awilix": "4.2.1",
+    "dotenv": "7.0.0",
     "hapi": "17.4.0",
     "joi": "13.1.0",
-    "lodash": "4.17.4",
-    "mongodb": "3.0.1",
+    "lodash": "4.17.11",
+    "mongodb": "3.2.3",
     "pino": "4.16.1",
-    "uuid": "3.2.1"
+    "uuid": "3.3.2"
   },
   "devDependencies": {
-    "cross-env": "^4.0.0",
-    "eslint": "^4.2.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.16.0",
     "eslint-plugin-jest": "^21.6.1",
-    "jest": "^20.0.0",
-    "jsdoc": "^3.4.3",
-    "nodemon": "^1.11.0",
-    "nsp": "2.7.0",
-    "raml2html": "^7.1.0",
-    "rimraf": "^2.6.1"
+    "jest": "^22.4.1",
+    "jsdoc": "^3.5.5",
+    "nodemon": "^1.18.11",
+    "raml2html": "^7.3.0",
+    "rimraf": "^2.6.3"
   },
   "engines": {
     "node": ">=8.0.0"

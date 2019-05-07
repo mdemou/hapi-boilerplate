@@ -58,7 +58,10 @@ $ npm run build:apiDocs
 $ open documentation/index.html
 
 # check packages vulnerabilities
-$ npm run nsp
+$ npm audit
+
+# fix vulnerabilities
+$ npm audit fix
 ```
 
 ## Docker
