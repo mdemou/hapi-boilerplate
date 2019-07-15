@@ -12,11 +12,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "awilix": "4.2.1",
+    "awilix": "4.2.2",
     "dotenv": "7.0.0",
     "hapi": "17.4.0",
     "joi": "13.1.0",
-    "lodash": "4.17.11",
+    "lodash": "4.17.14",
     "mongodb": "3.2.3",
     "pino": "4.16.1",
     "uuid": "3.3.2"
